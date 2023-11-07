@@ -1,0 +1,55 @@
+1)	Стратегия — это поведенческий паттерн, выносит набор алгоритмов в собственные классы и делает их взаимозаменимыми.
+	Применимость: Стратегия часто используется в C#-коде, особенно там, где нужно подменять алгоритм во время выполнения программы. Многие примеры стратегии можно заменить простыми lambda-выражениями.
+
+
+using System;
+namespace Strategy
+{
+    class Worker
+    {
+        public void DoWork(IJob job )
+        {
+            if (job != null)
+            {
+                job.DoJob();
+            }
+        }
+    }
+
+    public interface IJob
+    {
+        void DoJob();
+    }
+
+    class FootJob : IJob
+    {
+        public void DoJob()
+        {
+            Console.WriteLine("Foot Job");
+        }
+    }
+	
+    class HandJob : IJob
+    {
+        public void DoJob()
+        {
+            Console.WriteLine("Hand Job");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var worker = new Worker();
+            worker.DoWork(new HandJob());
+            worker.DoWork(new FootJob());
+        }
+    }
+}
+
+
+/////Console
+//
+//Hand Job
+//Foot Job

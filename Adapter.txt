@@ -1,0 +1,56 @@
+1)	Адаптер — это структурный паттерн, который позволяет подружить несовместимые объекты.
+	Применимость: Паттерн можно часто встретить в C#-коде, особенно там, где требуется конвертация разных типов данных или совместная работа классов с разными интерфейсами.using System;
+
+namespace RefactoringGuru.DesignPatterns.Adapter.Conceptual
+{
+    // Целевой класс объявляет интерфейс, с которым может работать клиентский код.
+    public interface ITarget
+    {
+        string GetRequest();
+    }
+
+    // Адаптируемый класс содержит некоторое полезное поведение, но его
+    // интерфейс несовместим с существующим клиентским кодом. Адаптируемый
+    // класс нуждается в некоторой доработке, прежде чем клиентский код сможет его использовать.
+    class Adaptee
+    {
+        public string GetSpecificRequest()
+        {
+            return "Specific request.";
+        }
+    }
+
+    // Адаптер делает интерфейс Адаптируемого класса совместимым с целевым интерфейсом.
+    class Adapter : ITarget
+    {
+        private Adaptee _adaptee;
+
+        public Adapter(Adaptee adaptee)
+        {
+            _adaptee = adaptee;
+        }
+
+        public string GetRequest()
+        {
+            return $"This is adapted'{_adaptee.GetSpecificRequest()}'";
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Adaptee adaptee = new Adaptee();
+            ITarget target = new Adapter(adaptee);
+
+            Console.WriteLine("Adaptee interface is incompatible with the client.");
+            Console.WriteLine("But with adapter client can call it's method.");
+            Console.WriteLine(target.GetRequest());
+        }
+    }
+}
+
+/////Console
+//Adaptee interface is incompatible with the client.
+//But with adapter client can call it's method.
+//This is adapted'Specific request.'
