@@ -115,3 +115,9 @@ Template/bin/
 Template/.vs/
 FactoryMethodLesson/Bad/Bad/obj/Debug/
 FactoryMethodLesson/Good/Good/obj/Debug/
+Builder/.vs/
+Builder/Builder/bin/
+Builder/Builder/obj/
+Proxy/.vs/Proxy/v16/
+Proxy/Proxy/bin/
+Proxy/Proxy/obj/
