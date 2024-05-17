@@ -13,13 +13,13 @@ namespace Template
         // Шаблонный метод определяет скелет алгоритма.
         public void TemplateMethod()
         {
-            this.BaseOperation1();
-            this.RequiredOperations1();
-            this.BaseOperation2();
-            this.Hook1();
-            this.RequiredOperation2();
-            this.BaseOperation3();
-            this.Hook2();
+            BaseOperation1();
+            RequiredOperations1();
+            BaseOperation2();
+            Hook1();
+            RequiredOperation2();
+            BaseOperation3();
+            Hook2();
         }
 
         // Эти операции уже имеют реализации.
@@ -61,36 +61,36 @@ namespace Template
     // Конкретные классы должны реализовать все абстрактные операции базового
     // класса. Они также могут переопределить некоторые операции с реализацией
     // по умолчанию.
-    class ConcreteClass1 : AbstractClass
+    class Class1 : AbstractClass
     {
         protected override void RequiredOperations1()
         {
-            Console.WriteLine("ConcreteClass1 says: Implemented Operation1");
+            Console.WriteLine("Class1 says: Implemented Operation1");
         }
 
         protected override void RequiredOperation2()
         {
-            Console.WriteLine("ConcreteClass1 says: Implemented Operation2");
+            Console.WriteLine("Class1 says: Implemented Operation2");
         }
     }
 
     // Обычно конкретные классы переопределяют только часть операций базового
     // класса.
-    class ConcreteClass2 : AbstractClass
+    class Class2 : AbstractClass
     {
         protected override void RequiredOperations1()
         {
-            Console.WriteLine("ConcreteClass2 says: Implemented Operation1");
+            Console.WriteLine("Class2 says: Implemented Operation1");
         }
 
         protected override void RequiredOperation2()
         {
-            Console.WriteLine("ConcreteClass2 says: Implemented Operation2");
+            Console.WriteLine("Class2 says: Implemented Operation2");
         }
 
         protected override void Hook2()
         {
-            Console.WriteLine("ConcreteClass2 says: Overridden Hook2 в челюсть");
+            Console.WriteLine("Class2 says: Overridden Hook2 в челюсть");
         }
     }
 
@@ -114,12 +114,12 @@ namespace Template
         {
             Console.WriteLine("Same client code can work with different subclasses:");
 
-            Client.ClientCode(new ConcreteClass1());
+            Client.ClientCode(new Class1());
 
             Console.Write("\n");
 
             Console.WriteLine("Same client code can work with different subclasses:");
-            Client.ClientCode(new ConcreteClass2());
+            Client.ClientCode(new Class2());
         }
     }
 }
